@@ -1,0 +1,20 @@
+#!/bin/bash
+cd `dirname $0`
+
+TIMEOUT=300s
+
+TIMESTAMP=`date +%s`
+
+# Test fileio
+export REPORT_NAME=reports/$TIMESTAMP/fileio
+./profile stress --hdd `nproc` --hdd-bytes 1m --timeout $TIMEOUT
+
+# Test CPU
+export REPORT_NAME=reports/$TIMESTAMP/cpu
+./profile stress -c `nproc` --timeout $TIMEOUT
+
+# Test both
+export REPORT_NAME=reports/$TIMESTAMP/both
+./profile stress -c `nproc` --hdd `nproc` --hdd-bytes 1m --timeout $TIMEOUT
+
+./clean
