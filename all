@@ -1,11 +1,12 @@
 #!/bin/bash
+
 cd `dirname $0`
 
 TIMEOUT=300s
 
 TIMESTAMP=`date +%s`
 
-# Test fileio
+# Test file io
 export REPORT_NAME=reports/$TIMESTAMP/fileio
 ./profile stress --hdd `nproc` --hdd-bytes 1m --timeout $TIMEOUT
 

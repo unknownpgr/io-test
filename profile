@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# Usage: REPORT_NAME=<report name> ./profile.sh <command>
+
 echo Preparing profileing...
 
 REPORT_DIR=`dirname $0`/$REPORT_NAME
